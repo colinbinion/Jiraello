@@ -1,6 +1,6 @@
-var myModule = angular.module('Angello', []);
+var myModule = angular.module('Jiraello', []);
 
-myModule.factory('AngelloHelper', function() {
+myModule.factory('JiraelloHelper', function() {
     var buildIndex = function (source, property) {
         var tempArray = [];
 
@@ -16,7 +16,7 @@ myModule.factory('AngelloHelper', function() {
     };
 });
 
-myModule.service('AngelloModel', function() {
+myModule.service('JiraelloModel', function() {
     var service = this,
         statuses = [
             {name: 'Back Log'},
@@ -76,14 +76,14 @@ myModule.service('AngelloModel', function() {
     };
 });
 
-myModule.controller('MainCtrl', function(AngelloModel, AngelloHelper) {
+myModule.controller('MainCtrl', function(JiraelloModel, JiraelloHelper) {
     var main = this;
 
-    main.types = AngelloModel.getTypes();
-    main.statuses = AngelloModel.getStatuses();
-    main.stories = AngelloModel.getStories();
-    main.typesIndex = AngelloHelper.buildIndex(main.types, 'name');
-    main.statusesIndex = AngelloHelper.buildIndex(main.statuses, 'name');
+    main.types = JiraelloModel.getTypes();
+    main.statuses = JiraelloModel.getStatuses();
+    main.stories = JiraelloModel.getStories();
+    main.typesIndex = JiraelloHelper.buildIndex(main.types, 'name');
+    main.statusesIndex = JiraelloHelper.buildIndex(main.statuses, 'name');
 
     main.setCurrentStory = function (story) {
         main.currentStory = story;
