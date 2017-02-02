@@ -1,4 +1,4 @@
-angular.module('Jxxx.Common')
+angular.module('Jiraello.Common')
   .service('StoriesModel',
     function () {
       
