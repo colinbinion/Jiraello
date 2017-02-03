@@ -30,4 +30,10 @@
       </div>
     </div>
   </form>
+  <hr/>
+
+  <div ng-if="storyboard.currentStory">
+    <button class="btn btn-default" ng-click="storyboard.updateCancel()">Cancel</button>
+    <button class="btn pull-right btn-default" ng-disabled="!storyboard.detailsForm.$valid" ng-click="storyboard.updateStory()">Update</button>
+  </div>
 </div>

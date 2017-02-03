@@ -3,6 +3,9 @@ angular.module('Jiraello.Storyboard')
     function () {
       var storyboard = this;
 
+      storyboard.currentStory = null;
+      storyboard.editedStory = {};
+
       storyboard.stories = [
         {
           "assignee": "1",
@@ -33,4 +36,31 @@ angular.module('Jiraello.Storyboard')
         {name: 'QA Review'},
         {name: 'Verified'},
       ];
+
+      storyboard.setCurrentStory = function(story) {
+        storyboard.currentStory = story;
+        storyboard.editedStory = angular.copy(storyboard.currentStory);
+      };
+
+      storyboard.updateStory = function() {
+        var fields = ['title', 'description', 'criteria', 'status', 'type', 'reporter', 'assignee'];
+
+        fields.forEach(function(field) {
+          storyboard.currentStory[field] = storyboard.editedStory[field];
+        });
+
+        storyboard.resetForm();
+      };
+
+      storyboard.updateCancel = function() {
+        storyboard.resetForm();
+      };
+
+      storyboard.resetForm = function() {
+        storyboard.currentStory = null;
+        storyboard.editedStory = {};
+
+        storyboard.detailsForm.$setPristine();
+        storyboard.detailsForm.$setUntouched();
+      };
     });
