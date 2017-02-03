@@ -28,12 +28,17 @@
         <label class="control-label" for="inputTitle">*Title</label>
         <input type="text" id="inputTitle" name="inputTitle" placeholder="Title" ng-model="storyboard.editedStory.title" ng-required="true" ng-min-length="3" ng-maxlength="30" class="form-control">
       </div>
-    </div>
+    </div> 
   </form>
   <hr/>
 
   <div ng-if="storyboard.currentStory">
     <button class="btn btn-default" ng-click="storyboard.updateCancel()">Cancel</button>
     <button class="btn pull-right btn-default" ng-disabled="!storyboard.detailsForm.$valid" ng-click="storyboard.updateStory()">Update</button>
+  </div>
+
+  <div ng-if="!storyboard.currentStory">
+    <button class="btn pull-right btn-default" ng-disabled="!storyboard.detailsForm.$valid"></button>
+
   </div>
 </div>
