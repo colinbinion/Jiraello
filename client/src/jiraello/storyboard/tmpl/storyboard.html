@@ -1,9 +1,9 @@
 <div class="list-area">
   <div class="list-wrapper">
-    <ul class="list my-repeat-animation" ng-repeat="status in ::storyboard.statuses">
-      <h3 class="status">{{::status.name}}</h3>
+    <ul class="list" ng-repeat="status in storyboard.statuses">
+      <h3 class="status">{{status.name}}</h3>
       <hr/>
-      <li class="story" ng-repeat="story in storyboard.stories">
+      <li class="story" ng-repeat="story in storyboard.stories | filter: {status:status.name}">
         <article>
           <div>
             <button type="button" class="close">x</button>
